@@ -1,6 +1,8 @@
 import React from 'react';
 import './landing.css'
 import EarthGrid from '../../assets/EarthGrid.png'
+import Footer from './footer.jsx';
+
 
 function Landing() {
   return (
@@ -8,6 +10,7 @@ function Landing() {
       <div className="oneLineContainer">
       <img src={EarthGrid} className='earthImage'/>
       </div>
+      <Footer />
     </div>
   );
 }
