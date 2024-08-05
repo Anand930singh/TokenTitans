@@ -4,3 +4,12 @@
     height: 100vh;
     background-color: #0e0c22;
 }
+.oneLineContainer{
+    position: relative;
+    height: 70%;
+}
+.earthImage{
+    position: relative;
+    height: 100%;
+    opacity: 0.5;
+}
