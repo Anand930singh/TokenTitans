@@ -1,7 +1,7 @@
 import React from "react";
-
 import Navbar from "../../components/Navbar/Navbar";
 import GridLines from "react-gridlines";
+import Footer from "../../components/Footer/Footer";
 
 function Landing() {
   return (
@@ -24,6 +24,7 @@ function Landing() {
             Get Started
           </button>
         </div>
+        <Footer />
       </GridLines>
     </div>
   );
