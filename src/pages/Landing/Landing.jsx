@@ -11,7 +11,7 @@ function Landing() {
         cellWidth={25}
         strokeWidth={1}
         cellWidth2={600}
-        lineColor = "#1f1d2b"
+        lineColor="#1f1d2b"
       >
         <Navbar />
         <div className="flex flex-col items-center justify-center h-screen">
