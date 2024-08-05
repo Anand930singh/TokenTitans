@@ -13,3 +13,7 @@
     height: 100%;
     opacity: 0.5;
 }
+.grid-area{
+    position: relative;
+    width: 100%;
+}
