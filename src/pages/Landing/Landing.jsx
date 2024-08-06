@@ -6,15 +6,15 @@ import Icons from "../../components/MarqueeIcons";
 
 function Landing() {
   return (
-    <div className="h-full bg-[#0e0c22]">
-      <GridLines
+    
+        <div className="h-full bg-[#0e0c22] w-full">
+    <GridLines
         className="grid-area"
         cellWidth={25}
         strokeWidth={1}
         cellWidth2={600}
         lineColor="#1f1d2b"
       >
-        <Navbar />
         <div className="flex flex-col items-center justify-center h-screen">
           <h1 className="text-4xl text-white hover:text-purple-600 font-bold hover:scale-105 transition ease-linear">
             Welcome to Token Titans
