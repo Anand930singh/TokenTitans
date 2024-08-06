@@ -1,12 +1,12 @@
-import React from 'react'
-import './Home.css'
+import React from "react";
+import "./Home.css";
 
 function Home() {
   return (
-    <div className='homeContain'>
-        <div className="homeNav"></div>
+    <div className="">
+      <div></div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
