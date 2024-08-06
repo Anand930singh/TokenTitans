@@ -2050,6 +2050,10 @@
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   "version" "1.2.3"
 
+react-dom@^18.3.1, "react-dom@>= 16.8.0 || ^18.0.0", react-dom@>=16.8:
+  version "18.3.1"
+  resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
+  integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
 "react-dom@^18.3.1", "react-dom@>=16.8":
   "integrity" "sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-18.3.1.tgz"
@@ -2058,6 +2062,15 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.2"
 
+react-fast-marquee@^1.6.5:
+  version "1.6.5"
+  resolved "https://registry.npmjs.org/react-fast-marquee/-/react-fast-marquee-1.6.5.tgz"
+  integrity sha512-swDnPqrT2XISAih0o74zQVE2wQJFMvkx+9VZXYYNSLb/CUcAzU9pNj637Ar2+hyRw6b4tP6xh4GQZip2ZCpQpg==
+
+react-gridlines@^1.1.7:
+  version "1.1.7"
+  resolved "https://registry.npmjs.org/react-gridlines/-/react-gridlines-1.1.7.tgz"
+  integrity sha512-7Hb2pJ9HXHaYD2cZHAroL2lUrOjQSappdN/aPSJqv7fYpiyq6ePUtf8qMnCxJdKlEEgo2jcGrMbaKCkdiTvEQw==
 "react-gridlines@^1.1.7":
   "integrity" "sha512-7Hb2pJ9HXHaYD2cZHAroL2lUrOjQSappdN/aPSJqv7fYpiyq6ePUtf8qMnCxJdKlEEgo2jcGrMbaKCkdiTvEQw=="
   "resolved" "https://registry.npmjs.org/react-gridlines/-/react-gridlines-1.1.7.tgz"
@@ -2095,6 +2108,10 @@
   dependencies:
     "@remix-run/router" "1.19.0"
 
+react@*, react@^18.3.1, "react@>= 16.10.0", "react@>= 16.8.0 || ^18.0.0", react@>=16.8:
+  version "18.3.1"
+  resolved "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
+  integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
 "react@*", "react@^18.3.1", "react@>= 16.10.0", "react@>=16.8":
   "integrity" "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ=="
   "resolved" "https://registry.npmjs.org/react/-/react-18.3.1.tgz"
