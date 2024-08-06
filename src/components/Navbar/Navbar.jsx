@@ -17,13 +17,13 @@ const Navbar = () => {
             fill="white"
           />
         </svg>
-        <h1>Token Titans</h1>
+        <Link to={"/"}>Token Titans</Link>
       </div>
       <div className="text-white flex items-center justify-center gap-6">
         <Link to="/#" className="hover:text-purple-600">
           About Us
         </Link>
-        <Link to="/#" className="hover:text-purple-600">
+        <Link to="/team" className="hover:text-purple-600">
           Team
         </Link>
         <Link to="/#" className="hover:text-purple-600">
