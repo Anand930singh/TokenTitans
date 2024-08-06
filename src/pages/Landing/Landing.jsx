@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import GridLines from "react-gridlines";
 import Footer from "../../components/Footer/Footer";
 import Icons from "../../components/MarqueeIcons";
 import Navbar from "../../components/Navbar/Navbar";
 import AnonAadhaarButton from "../../components/AnonAdharButton";
+import Add_music from "../../components/Form/Add_music";
+import Modal from "../../components/Modal/Modal";
+
 
 function Landing() {
+  const [showAddMusic, setShowAddMusic] = useState(false);
+
+  const handleAddMusicClick = () => {
+    setShowAddMusic(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowAddMusic(false);
+  };
   return (
     <GridLines
       className="grid-area"
@@ -25,6 +37,17 @@ function Landing() {
             and secure, seamless transactions.
           </p>
           <AnonAadhaarButton />
+          <button
+            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-white border border-white border-opacity-20 px-10 py-2 rounded-md shadow-lg hover:bg-gradient-to-r from-violet-500 to-blue-500 mt-6"
+            onClick={handleAddMusicClick}
+          >
+            Add Music
+          </button>
+          {showAddMusic && (
+            <Modal onClose={handleCloseModal}>
+              <Add_music onClose={handleCloseModal} />
+            </Modal>
+          )}
           <Icons />
         </div>
         <Footer />
