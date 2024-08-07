@@ -13,6 +13,7 @@
     "@anon-aadhaar/react": "^2.4.0",
     "@thirdweb-dev/react": "^4.9.4",
     "@thirdweb-dev/sdk": "^4.0.99",
+    "axios": "^1.7.3",
     "ethers": "^5.7.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
