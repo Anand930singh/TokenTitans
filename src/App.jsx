@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <div className="min-h-screen w-full  bg-[#0e0c22]">
 
-          <Navbar />
+          
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/team" element={<Team />} />
