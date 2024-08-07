@@ -1,0 +1,72 @@
+.music-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;  
+    overflow-y: scroll;  
+}
+.music-card-differ {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    border: 1px solid #444;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    margin-bottom: 16px;
+    background-color: #1c1b29;
+    transition: transform 0.2s;
+}
+
+.music-card-differ:hover {
+    transform: scale(1.02);
+}
+
+.music-card-differ img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+}
+
+.music-details {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.music-details h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2em;
+    color: #f5f5f5;
+}
+
+.music-details p {
+    margin: 4px 0;
+    color: #c7c7c7;
+}
+
+.music-container::-webkit-scrollbar {
+    width: 3px;
+}
+.music-container::-webkit-scrollbar-thumb {
+    background-color: #211e46;
+    border-radius: 10px;
+    border: none; /* Remove border for better fit in reduced scrollbar width */
+}
+.music-container::-webkit-scrollbar-track {
+    background: #0e0c22;
+    border-radius: 10px;
+}
+.music-container::-moz-scrollbar-thumb {
+    background-color: #211e46;
+    border-radius: 10px;
+}
+.music-container::-moz-scrollbar-thumb:hover {
+    background: #555;
+}

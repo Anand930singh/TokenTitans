@@ -1,0 +1,38 @@
+.feed {
+    position: relative;
+    width: 600px;
+    overflow-x: scroll; /* Make the container scrollable horizontally */
+    display: flex;
+    flex-direction: row;
+}
+
+.genre {
+    white-space: nowrap; /* Prevent line breaks within genre items */
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #fff; 
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+}
+
+.genre:hover {
+    opacity: 0.8; /* Change opacity on hover for a subtle effect */
+}
+
+.feed::-webkit-scrollbar {
+    height: 8px;
+}
+
+.feed::-webkit-scrollbar-thumb {
+    background-color: #211e46;
+    border-radius: 10px;
+    border: 3px solid #0e0c22; /* Padding around thumb */
+}
+
+.feed::-webkit-scrollbar-track {
+    background: #0e0c22; /* Background of the track */
+    border-radius: 10px;
+}
