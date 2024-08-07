@@ -1,9 +1,12 @@
+import { useAddress } from "@thirdweb-dev/react";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  const address = useAddress();
+
   return (
-    <nav className="flex items-center justify-between w-full max-w-7xl mx-auto py-4 bg-inherit">
+    <nav className="flex items-center justify-around w-full py-4 mx-auto backdrop-blur-md bg-white bg-opacity-[1%] shadow-lg">
       <div className="flex items-center justify-center gap-4 text-white text-xl hover:text-purple-600">
         <svg
           width="46"
@@ -20,21 +23,29 @@ const Navbar = () => {
         <Link to={"/"}>Token Titans</Link>
       </div>
       <div className="text-white flex items-center justify-center gap-6">
-        <Link to="/#" className="hover:text-purple-600">
-          About Us
-        </Link>
-        <Link to="/team" className="hover:text-purple-600">
-          Team
-        </Link>
-        <Link to="/#" className="hover:text-purple-600">
-          Tech Stack
-        </Link>
-        <Link
-          to="/"
-          className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-white border border-white border-opacity-20 px-10 py-2 rounded-md shadow-lg hover:bg-gradient-to-r from-violet-500 to-blue-500"
-        >
-          Sign Up
-        </Link>
+        {address ? (
+          <button className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white border border-white border-opacity-30 px-4 py-2 rounded-md shadow-lg hover:bg-gradient-to-r from-violet-500 to-blue-500">
+            {address}
+          </button>
+        ) : (
+          <>
+            <Link to="/#" className="hover:text-purple-600">
+              About Us
+            </Link>
+            <Link to="/team" className="hover:text-purple-600">
+              Team
+            </Link>
+            <Link to="/#" className="hover:text-purple-600">
+              Tech Stack
+            </Link>
+            <Link
+              to="/"
+              className="bg-white bg-opacity-20 backdrop-filter backdrop-blur-lg text-white border border-white border-opacity-30 px-10 py-2 rounded-md shadow-lg hover:bg-gradient-to-r from-violet-500 to-blue-500"
+            >
+              Sign Up
+            </Link>
+          </>
+        )}
       </div>
     </nav>
   );

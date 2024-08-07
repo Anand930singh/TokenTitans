@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import GridLines from "react-gridlines";
 import Footer from "../../components/Footer/Footer";
 import Icons from "../../components/MarqueeIcons";
-import Navbar from "../../components/Navbar/Navbar";
 import AnonAadhaarButton from "../../components/AnonAdharButton";
 import Add_music from "../../components/Form/Add_music";
 import Modal from "../../components/Modal/Modal";
-
+import GridLines from "react-gridlines";
 
 function Landing() {
   const [showAddMusic, setShowAddMusic] = useState(false);
@@ -20,14 +18,12 @@ function Landing() {
   };
   return (
     <GridLines
-      className="grid-area"
       cellWidth={25}
-      strokeWidth={1}
+      strokeWidth={2}
       cellWidth2={600}
       lineColor="#1f1d2b"
     >
-      <div className="h-full w-full lg:max-w-7xl mx-auto p-6">
-        <Navbar />
+      <div className="h-full w-full  mx-auto p-6">
         <div className="flex flex-col items-center justify-center min-h-screen my-12">
           <h1 className="text-4xl text-white hover:text-purple-600 font-bold transition ease-in-out hover:cursor-pointer">
             Welcome to Token Titans
