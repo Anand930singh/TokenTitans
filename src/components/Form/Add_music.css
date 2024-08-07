@@ -22,16 +22,17 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 40px;
   border-radius: 16px;
-  height: 90%;
+  height: 84%;
   width: 90%;
-  max-width: 500px;
+  max-width: 600px; /* increased the width to accommodate two columns */
   position: relative;
 }
-.form-popup-content h2
-{
-  margin-top:-15px;
-  margin-bottom:-12px
+
+.form-popup-content h2 {
+  margin-top: -15px;
+  margin-bottom: -12px;
 }
+
 .close {
   position: absolute;
   top: 10px;
@@ -46,6 +47,17 @@
   background-color: transparent;
   padding: 2rem;
   border-radius: 8px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
 }
 
 .form-group {
@@ -64,8 +76,9 @@
 }
 
 .form-group input[type="text"],
-.form-group input[type="number"],
-.form-group input[type="file"] {
+.form-group input[type="date"],
+.form-group input[type="file"],
+.form-group select {
   width: 100%;
   padding: 0.75rem;
   font-size: 1rem;
@@ -77,30 +90,52 @@
 }
 
 .form-group input[type="text"]::placeholder,
-.form-group input[type="number"]::placeholder {
+.form-group input[type="date"]::placeholder {
   color: #cfcfcf;
 }
 
 .form-group input:focus {
   color: #ffffff;
   outline: none;
-  border-color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.5);
 }
+
+.custom-file-label {
+  height:51px;
+  display: inline-block;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
 
 .mint-button {
+  display: inline-block;
   width: 100%;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  color: white;
-  background-color: rgb(59, 28, 117);
-  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  padding: 0.75rem 1.25rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #3b1c75;
+  background-color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 8px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top:5px;
 }
-.mint-button
-
-.mint-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.mint-button:hover
+{
+  color: white;
+  background-color: #3b1c75;
 }
 
 .form-popup-title {
@@ -109,4 +144,14 @@
   font-weight: bold;
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.form-group select {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.form-group option {
+  background-color: rgba(59, 28, 117, 0.8);
+  color: white;
 }
