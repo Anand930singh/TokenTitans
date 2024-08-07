@@ -5,10 +5,14 @@ import {
   useAnonAadhaar,
   useProver,
 } from "@anon-aadhaar/react";
+import { ConnectWallet, useAddress } from "@thirdweb-dev/react";
+import { useNavigate } from "react-router-dom";
 
 const AnonAadhaarButton = () => {
   const [anonAadhaar] = useAnonAadhaar();
   const [, latestProof] = useProver();
+  const address = useAddress();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (anonAadhaar.status === "logged-in") {
@@ -16,6 +20,14 @@ const AnonAadhaarButton = () => {
       console.log("Latest Proof:", latestProof);
     }
   }, [anonAadhaar, latestProof]);
+
+  useEffect(() => {
+    if (address) {
+      navigate("/home");
+    } else {
+      navigate("/");
+    }
+  }, [address, navigate]);
 
   return (
     <div
@@ -28,17 +40,27 @@ const AnonAadhaarButton = () => {
       />
       <p className="text-sm mt-2">{anonAadhaar?.status}</p>
       {anonAadhaar?.status === "logged-in" && (
-        <div className="w-full p-4 mt-4 bg-[#0e0c22] bg-opacity-10  rounded-md shadow-inner">
-          <p className="text-green-400 font-semibold mb-2">✅ Proof is valid</p>
-          {latestProof && (
-            <div className="mt-4 bg-[#0e0c22] bg-opacity-10  p-4 rounded-md">
-              <h3 className="text-lg text-white mb-2">Latest Proof</h3>
-              <pre className="overflow-auto text-xs bg-[#1c1845] bg-opacity-10 p-4 rounded-lg hover:text-purple-400 cursor-pointer outline">
-                {JSON.stringify(latestProof, null, 2)}
-              </pre>
-            </div>
+        <>
+          <ConnectWallet />
+          {address && (
+            <p className="text-sm text-green-400 mt-2">
+              Connected Wallet Address: {address}
+            </p>
           )}
-        </div>
+          <div className="w-full p-4 mt-4 bg-[#0e0c22] bg-opacity-10  rounded-md shadow-inner">
+            <p className="text-green-400 font-semibold mb-2">
+              ✅ Proof is valid
+            </p>
+            {latestProof && (
+              <div className="mt-4 bg-[#0e0c22] bg-opacity-10  p-4 rounded-md">
+                <h3 className="text-lg text-white mb-2">Latest Proof</h3>
+                <pre className="overflow-auto text-xs bg-[#1c1845] bg-opacity-10 p-4 rounded-lg hover:text-purple-400 cursor-pointer outline">
+                  {JSON.stringify(latestProof, null, 2)}
+                </pre>
+              </div>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
