@@ -5,11 +5,12 @@ import Team from "./pages/Team";
 import Home from "./pages/home/Home";
 import "./App.css";
 import {ConnectWallet} from '@thirdweb-dev/react'
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#0e0c22]">
+        <Navbar/>
         <ConnectWallet />
           <Routes>
             <Route path="/" element={<Landing />} />
@@ -18,7 +19,6 @@ function App() {
             <Route path="/*" element={<div>Not Found</div>} />
           </Routes>
 
-      </div>
     </BrowserRouter>
   );
 }
