@@ -98,6 +98,15 @@ const Add_music = ({ onClose }) => {
     try {
       const response = await axios.post(url, json, { headers });
       console.log("JSON uploaded:", response.data);
+      const res = await axios.post("http://localhost:8000/store", {
+        IpfsHash: response.data.IpfsHash,
+        PinSize: response.data.PinSize,
+        Timestamp: response.data.Timestamp,
+      });
+      
+
+      console.log("Data stored in MongoDB:", res.data);
+
       return `https://gateway.pinata.cloud/ipfs/${response.data.IpfsHash}`;
     } catch (error) {
       console.error("Error uploading JSON:", error);

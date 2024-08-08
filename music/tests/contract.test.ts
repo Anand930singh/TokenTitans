@@ -18,11 +18,11 @@ import { createApprovalEvent } from "./contract-utils"
 describe("Describe entity assertions", () => {
   beforeAll(() => {
     let owner = Address.fromString("0x0000000000000000000000000000000000000001")
-    let approved = Address.fromString(
+    let spender = Address.fromString(
       "0x0000000000000000000000000000000000000001"
     )
-    let tokenId = BigInt.fromI32(234)
-    let newApprovalEvent = createApprovalEvent(owner, approved, tokenId)
+    let value = BigInt.fromI32(234)
+    let newApprovalEvent = createApprovalEvent(owner, spender, value)
     handleApproval(newApprovalEvent)
   })
 
@@ -46,13 +46,13 @@ describe("Describe entity assertions", () => {
     assert.fieldEquals(
       "Approval",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
-      "approved",
+      "spender",
       "0x0000000000000000000000000000000000000001"
     )
     assert.fieldEquals(
       "Approval",
       "0xa16081f360e3847006db660bae1c6d1b2e17ec2a-1",
-      "tokenId",
+      "value",
       "234"
     )
 

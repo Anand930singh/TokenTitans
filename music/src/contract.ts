@@ -1,38 +1,17 @@
 import {
   Approval as ApprovalEvent,
-  ApprovalForAll as ApprovalForAllEvent,
   OwnershipTransferred as OwnershipTransferredEvent,
   Transfer as TransferEvent
 } from "../generated/Contract/Contract"
-import {
-  Approval,
-  ApprovalForAll,
-  OwnershipTransferred,
-  Transfer
-} from "../generated/schema"
+import { Approval, OwnershipTransferred, Transfer } from "../generated/schema"
 
 export function handleApproval(event: ApprovalEvent): void {
   let entity = new Approval(
     event.transaction.hash.concatI32(event.logIndex.toI32())
   )
   entity.owner = event.params.owner
-  entity.approved = event.params.approved
-  entity.tokenId = event.params.tokenId
-
-  entity.blockNumber = event.block.number
-  entity.blockTimestamp = event.block.timestamp
-  entity.transactionHash = event.transaction.hash
-
-  entity.save()
-}
-
-export function handleApprovalForAll(event: ApprovalForAllEvent): void {
-  let entity = new ApprovalForAll(
-    event.transaction.hash.concatI32(event.logIndex.toI32())
-  )
-  entity.owner = event.params.owner
-  entity.operator = event.params.operator
-  entity.approved = event.params.approved
+  entity.spender = event.params.spender
+  entity.value = event.params.value
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
@@ -63,7 +42,7 @@ export function handleTransfer(event: TransferEvent): void {
   )
   entity.from = event.params.from
   entity.to = event.params.to
-  entity.tokenId = event.params.tokenId
+  entity.value = event.params.value
 
   entity.blockNumber = event.block.number
   entity.blockTimestamp = event.block.timestamp
