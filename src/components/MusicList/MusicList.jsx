@@ -1,53 +1,57 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./MusicList.css";
+import axios from "axios";
 
-function MusicList() {
-  const musicArray = [
-    {
-      title: "Blinding Lights",
-      artist: "The Weeknd",
-      album: "After Hours",
-      coverImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s",
-      musicUrl: "https://example.com/blinding-lights",
-      genre: "Synthwave",
-      releaseYear: 2020,
-    },
-    {
-      title: "Watermelon Sugar",
-      artist: "Harry Styles",
-      album: "Fine Line",
-      coverImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s",
-      musicUrl: "https://example.com/watermelon-sugar",
-      genre: "Pop",
-      releaseYear: 2019,
-    },
-    {
-      title: "Levitating",
-      artist: "Dua Lipa",
-      album: "Future Nostalgia",
-      coverImage:
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s",
-      musicUrl: "https://example.com/levitating",
-      genre: "Disco",
-      releaseYear: 2020,
-    },
-  ];
+function MusicList({ setTrackPlay }) {
+  const [musicArray, setMusicList] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8000/retrieve");
+        const musicData = await Promise.all(
+          response.data.map(async (item) => {
+            const res = await axios.get(
+              `https://jade-decent-jackal-694.mypinata.cloud/ipfs/${item.IpfsHash}`
+            );
+            return res.data;
+          })
+        );
+        setMusicList(musicData);
+        console.log("Data fetched successfully", musicData);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleCardClick = (music) => {
+    // Store the selected track in sessionStorage
+
+    sessionStorage.setItem("selectedTrack", JSON.stringify(music));
+    
+    // Update the state to immediately play the selected track
+    setTrackPlay(music);
+  };
 
   return (
     <div className="music-container">
       {musicArray.map((music, index) => (
-        <div className="music-card-differ" key={index}>
-          <div>
-            <img src={music.coverImage} alt={music.title} />
+        <div
+          className="music-card-differ"
+          key={index}
+          onClick={() => handleCardClick(music)}
+        >
+          <div className="music-image">
+            <img src={music.image} alt={music.title} />
           </div>
           <div className="music-details">
-            <h3>{music.title}</h3>
-            <p>Artist: {music.artist}</p>
-            <p>Album: {music.album}</p>
-            <p>Genre: {music.genre}</p>
-            <p>Release Year: {music.releaseYear}</p>
+            <div className="music-title-name">
+              <h3>{music.title}</h3>
+              <p className="music-name">{music.name}</p>
+            </div>
+            <p className="music-description">{music.description}</p>
           </div>
         </div>
       ))}

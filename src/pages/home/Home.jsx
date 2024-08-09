@@ -4,33 +4,20 @@ import { useAddress } from "@thirdweb-dev/react";
 import { useNavigate } from "react-router-dom";
 import Add_music from "../../components/Form/Add_music";
 import Modal from "../../components/Modal/Modal";
-import axios from "axios";
 import MusicCard from "../../components/MusicCard/MusicCard";
-import DummySong from "../../assets/DummySong.mp3";
 import HomeMusicCards from "../../components/HomeMusicCards/HomeMusicCards";
 import MusicList from "../../components/MusicList/MusicList";
+import Navbar from "../../components/Navbar/Navbar";
 
 function Home() {
   const [showAddMusic, setShowAddMusic] = useState(false);
-  const [musicList, setMusicList] = useState([]);
+  const [trackPlay, setTrackPlay] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:8000/retrieve");
-        const musicData = await Promise.all(
-          response.data.map(async (item) => {
-            const res = await axios.get(`https://jade-decent-jackal-694.mypinata.cloud/ipfs/${item.IpfsHash}`);
-            return res.data;
-          })
-        );
-        setMusicList(musicData);
-        console.log("Data fetched successfully", musicData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
+    const savedTrack = sessionStorage.getItem("selectedTrack");
+    if (savedTrack) {
+      setTrackPlay(JSON.parse(savedTrack));
+    }
   }, []);
 
   const handleAddMusicClick = () => {
@@ -43,32 +30,41 @@ function Home() {
 
   const address = useAddress();
   const navigate = useNavigate();
+  
   useEffect(() => {
     if (!address) {
       navigate("/");
     }
   }, [address, navigate]);
 
-  const track = {
-    title: "Punjabi",
-    artist: "Ajay Bhakar",
-    cover:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s",
-    src: DummySong,
+  const formatAddress = (address) => {
+    if (!address) return '';
+    return `${address.slice(0, 10)}...${address.slice(-4)}`;
   };
 
+  const formattedAddress = formatAddress(address);
+
   return (
-    <div className="homeContain mx-auto">
-      <div className="homeSideBar"></div>
-      <div className="mainHome">
-        <div className="homeContainNavBar">Your Feed</div>
-        <div className="homeMusicCards">
-          <HomeMusicCards />
-        </div>
-        <div className="musicList">
-          <MusicList musicList={musicList} />
+    <>
+      <div className="homeContain mx-auto">
+        <div className="homeSideBar">
+          <svg
+            width="30"
+            height="40"
+            viewBox="0 0 46 55"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M22.6 5.70001V27.2L17.7 24.4C9 19.4 3.59999 10.1 3.59999 0H0V24.6C0 32.6 4.59999 40 11.9 43.5L22.7 48.7V27.2L27.6 30C36.3 35 41.7 44.3 41.7 54.4H45.3V29.8C45.3 21.8 40.7 14.4 33.4 10.9L22.6 5.70001Z"
+              fill="white"
+            />
+          </svg>
+          <button className="but_home">Home</button>
+          <button className="but_home">Profile</button>
+          <button className="but_home">More</button>
           <button
-            className="bg-white bg-opacity-10 backdrop-filter backdrop-blur-lg text-white border border-white border-opacity-20 px-10 py-2 rounded-md shadow-lg hover:bg-gradient-to-r from-violet-500 to-blue-500 mt-6"
+            className="but_home_add"
             onClick={handleAddMusicClick}
           >
             Add Music
@@ -79,13 +75,29 @@ function Home() {
             </Modal>
           )}
         </div>
-      </div>
-      <div className="musicPlayArea">
-        <div className="musicCard">
-          <MusicCard track={track} />
+        <div className="mainHome">
+          <div className="homeContainNavBar">Your Feed</div>
+          <div className="homeMusicCards">
+            <HomeMusicCards />
+          </div>
+          <div className="musicList">
+            <MusicList setTrackPlay={setTrackPlay}/>
+          </div>
+        </div>
+        <div className="musicPlayArea">
+          <button className="address_but">
+            {formattedAddress}
+          </button>
+          <div className="musicCard">
+            {trackPlay ? (
+              <MusicCard track={trackPlay} />
+            ) : (
+              <div className="music-card">Select music to play</div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

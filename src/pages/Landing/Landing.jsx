@@ -4,17 +4,20 @@ import Icons from "../../components/MarqueeIcons";
 import AnonAadhaarButton from "../../components/AnonAdharButton";
 
 import GridLines from "react-gridlines";
+import Navbar from "../../components/Navbar/Navbar";
 
 function Landing() {
 
 
   return (
+
     <GridLines
       cellWidth={25}
       strokeWidth={2}
       cellWidth2={600}
       lineColor="#1f1d2b"
     >
+      <Navbar/>
       <div className="h-full w-full  mx-auto p-6">
         <div className="flex flex-col items-center justify-center min-h-screen my-12">
           <h1 className="text-4xl text-white hover:text-purple-600 font-bold transition ease-in-out hover:cursor-pointer">

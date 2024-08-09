@@ -4,7 +4,7 @@
     position: relative;
     border: 1px solid #211e46cc;
     width: 72rem;
-    height: 88vh;
+    height: 99.5vh;
     display: flex;
     flex-direction: row;
     color: white;
@@ -62,6 +62,40 @@
     padding-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 1rem;
-    height: 80%;
+    height: 88%;
 }
-
+.homeSideBar
+{
+    display:flex;
+    flex-direction:column;
+    /* justify-content: start; */
+    align-items: start;
+    margin-left:25px;
+    margin-top:20px;
+}
+.but_home
+{
+    font-size:1.25rem;
+    margin-top:25px;
+    /* background-color: red; */
+}
+.but_home_add
+{
+    font-size:1.25rem;
+    border-radius:50px;
+    margin-top:25px;
+    height:45px;
+    width:80%;
+    background-color: #007bffff;
+}
+.address_but
+{
+    font-size: 1.15rem;
+    height:40px;
+    color: rgb(205, 205, 205);
+    width: 90%;
+    border:solid 2px rgb(119, 116, 146);
+    border-radius:8px;
+    margin-top: 20px;
+    margin-left: 5%;
+}
