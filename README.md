@@ -56,6 +56,7 @@ By integrating MusicX, Polygon, and Anon Aadhar, this platform creates a compreh
 
 ### Educhain(Open Campus):-
 **Contract Address:** 0x2ecBEAF2B5a955d07A5A8B00078880286764665f
+
 **Deploymet URL:** https://opencampus-codex.blockscout.com/address/0x2ecBEAF2B5a955d07A5A8B00078880286764665f
 
 
