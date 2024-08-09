@@ -63,6 +63,7 @@ function Home() {
           </svg>
           <button className="but_home">Home</button>
           <button className="but_home">Profile</button>
+          <button className="but_home">Subscription</button>
           <button className="but_home">More</button>
           <button
             className="but_home_add"
