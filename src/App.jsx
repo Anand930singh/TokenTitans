@@ -3,6 +3,7 @@ import "./index.css";
 import Landing from "./pages/Landing/Landing";
 import Team from "./pages/Team";
 import Home from "./pages/home/Home";
+import Explore from "./pages/Explore/Explore";
 import "./App.css";
 
 import Navbar from "./components/Navbar/Navbar";
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<Landing />} />
             <Route path="/team" element={<Team />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
             <Route path="/*" element={<div>Not Found</div>} />
           </Routes>
         
