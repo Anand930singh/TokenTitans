@@ -2,33 +2,23 @@ import React, { useEffect, useState } from "react";
 import "./Home.css";
 import { useAddress } from "@thirdweb-dev/react";
 import { useNavigate } from "react-router-dom";
-
-import MusicCard from "../../components/MusicCard/MusicCard";
-import DummySong from "../../assets/DummySong.mp3";
-import HomeMusicCards from "../../components/HomeMusicCards/HomeMusicCards";
-import MusicList from "../../components/MusicList/MusicList";
 import Add_music from "../../components/Form/Add_music";
 import Modal from "../../components/Modal/Modal";
+import MusicCard from "../../components/MusicCard/MusicCard";
+import HomeMusicCards from "../../components/HomeMusicCards/HomeMusicCards";
+import MusicList from "../../components/MusicList/MusicList";
 import Navbar from "../../components/Navbar/Navbar";
 
 function Home() {
-  const address = useAddress();
-  const navigate = useNavigate();
-  
-  useEffect(() => {
-    if (!address) {
-      navigate("/");
-    }
-  }, [address, navigate]);
-
-  const track = {
-    title: "Punjabi",
-    artist: "Ajay Bhakar",
-    cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJA32WU4rBpx7maglqeEtt3ot1tPIRWptxA&s",
-    src: DummySong,
-  };
-
   const [showAddMusic, setShowAddMusic] = useState(false);
+  const [trackPlay, setTrackPlay] = useState(null);
+
+  useEffect(() => {
+    const savedTrack = sessionStorage.getItem("selectedTrack");
+    if (savedTrack) {
+      setTrackPlay(JSON.parse(savedTrack));
+    }
+  }, []);
 
   const handleAddMusicClick = () => {
     setShowAddMusic(true);
@@ -37,6 +27,15 @@ function Home() {
   const handleCloseModal = () => {
     setShowAddMusic(false);
   };
+
+  const address = useAddress();
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (!address) {
+      navigate("/");
+    }
+  }, [address, navigate]);
 
   const formatAddress = (address) => {
     if (!address) return '';
@@ -83,7 +82,7 @@ function Home() {
             <HomeMusicCards />
           </div>
           <div className="musicList">
-            <MusicList />
+            <MusicList setTrackPlay={setTrackPlay}/>
           </div>
         </div>
         <div className="musicPlayArea">
@@ -91,7 +90,11 @@ function Home() {
             {formattedAddress}
           </button>
           <div className="musicCard">
-            <MusicCard track={track} />
+            {trackPlay ? (
+              <MusicCard track={trackPlay} />
+            ) : (
+              <div className="music-card">Select music to play</div>
+            )}
           </div>
         </div>
       </div>
